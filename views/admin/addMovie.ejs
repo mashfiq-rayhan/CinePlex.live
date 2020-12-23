@@ -1,0 +1,214 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+<body>
+    <%- include('../includes/adminNavigation.ejs') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h1>Add Movie</h1>
+                <form action="/admin/add-movie" id="addMovie" name="addMovie" method="post"
+                    accept-charset="utf-8">
+                    <div class="form-group">
+                        <label for="movieWatchLink">Movie Watch Link</label>
+                        <input type="text" class="form-control" name="movieWatchLink" id="movieWatchLink" placeholder="Movie Watch Link">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieQuality">Movie Quality</label>
+                        <input type="text" class="form-control" name="movieQuality" id="movieQuality" placeholder="Movie Quality">
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary" id="LQ">LQ</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary" id="HQ">HQ</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary" id="SD">SD</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary" id="HD">HD</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary" id="Blueray">Blueray</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary" id="4K">4K</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary" id="3D">3D</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieCategory">Movie Category</label>
+                        <input type="text" class="form-control" name="movieCategory" id="movieCategory" placeholder="Movie Category">
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary" id="Bollywood">Bollywood</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary" id="Hollywood">Hollywood</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary" id="Tamil">Tamil</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary" id="Netflix">Netflix</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary" id="Hoichoi">Hoichoi</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary" id="Animation">Animation</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary" id="Foreign">Foreign</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieKeywords">Movie Keywords</label>
+                        <input type="text" class="form-control" name="movieKeywords" id="movieKeywords" placeholder="Movie Keywords">
+                        <button type="button" onclick="clearKeyWord()" class="btn btn-outline-warning">Clear</button>
+                        <br>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Murder">Murder</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Violence">Violence</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Blood">Blood</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Dead">Dead</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Fight">Fight</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Chase">Chase</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Escape">Escape</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Fear">Fear</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Rescue">Rescue</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Kidnapping">Kidnapping</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Revenge">Revenge</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Betrayal">Betrayal</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Suicide">Suicide</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Survival">Survival</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Danger">Danger</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Suspense">Suspense</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Explosion">Explosion</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Hospital">Hospital</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Dog">Dog</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Nudity">Nudity</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Sex">Sex</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Brutality">Brutality</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Deception">Deception</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Teenager">Teenager</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Massacre">Massacre</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Paranoia">Paranoia</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Surprise">Surprise</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Police">Police</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Doctor">Doctor</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Criminal">Criminal</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Shootout">Shootout</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Conspiracy">Conspiracy</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Money">Money</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Torture">Torture</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieTrailer">Movie Trailer</label>
+                        <input type="text" class="form-control" name="movieTrailer" id="movieTrailer" placeholder="Movie Trailer">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieTitle">Movie Title</label>
+                        <input type="text" class="form-control" name="movieTitle" id="movieTitle" placeholder="Movie Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieYear">Movie Year</label>
+                        <input type="text" class="form-control" name="movieYear" id="movieYear" placeholder="Movie Year">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieId">Movie Id</label>
+                        <input type="text" class="form-control" name="movieId" id="movieId" placeholder="Movie Id">
+                    </div>
+                    <div class="form-group">
+                        <label for="tmdbId">TMDB ID</label>
+                        <input type="text" class="form-control" name="tmdbId" id="tmdbId" placeholder="Tmdb Id">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieRatings">Movie Ratings</label>
+                        <input type="text" class="form-control" name="movieRatings" id="movieRatings" placeholder="Movie Ratings">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieGenre">Movie Genre</label>
+                        <input type="text" class="form-control" name="movieGenre" id="movieGenre" placeholder="Movie Genre">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieDate">Movie Date</label>
+                        <input type="text" class="form-control" name="movieDate" id="movieDate" placeholder="Movie Date">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieLang">Movie Language</label>
+                        <input type="text" class="form-control" name="movieLang" id="movieLang" placeholder="Movie Language">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieHomePage">Movie Home Page</label>
+                        <input type="text" class="form-control" name="movieHomePage" id="movieHomePage" placeholder="Movie Home Page" value="NA">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieRuntime">Movie Runtime</label>
+                        <input type="text" class="form-control" name="movieRuntime" id="movieRuntime" placeholder="Movie Runtime">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieStory">Movie Story</label>
+                        <input type="text" class="form-control" name="movieStory" id="movieStory" placeholder="MovieStory">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieSubtitle">Movie Subtitle</label>
+                        <input type="text" class="form-control" name="movieSubtitle" id="movieSubtitle" placeholder="Movie Subtitle" value="NA">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieActors">Movie Actors</label>
+                        <input type="text" class="form-control" name="movieActors" id="movieActors" placeholder="Movie Actors">
+                    </div>
+                    <div class="form-group">
+                        <label for="moviePoster">Movie Poster</label>
+                        <input type="text" class="form-control" name="moviePoster" id="moviePoster" placeholder="Movie Poster">
+                    </div>
+                    <div class="form-group">
+                        <label for="backdraft">Backdraft</label>
+                        <input type="text" class="form-control" name="backdraft" id="backdraft" placeholder="Backdraft">
+                    </div>
+                    <div class="form-group">
+                        <label for="views">Views</label>
+                        <input type="text" class="form-control" name="views" id="views" placeholder="Views" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="published">Published</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="published" id="published" value="1" checked>
+                            <label class="form-check-label" for="published">Published</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="published" id="unpublished" value="0">
+                            <label class="form-check-label" for="unpublished">Unpublished</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="downHit">Down Hit</label>
+                        <input type="text" class="form-control" name="downHit" id="downHit" placeholder="Down Hit" value="0">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-success">Save</button>
+                    </div>
+                </form>
+            
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name" value="Omkara">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Year</label>
+                    <input type="text" class="form-control" id="year" placeholder="Year" value="2006">
+                </div>
+                <button class="btn btn-default" onclick="tmdbProvider()">TMDB Search</button>
+                <button class="btn btn-default" onclick="tmdbCopy()">TMDB Copy</button>
+                <div class="col-12">
+                    <div class="row">
+                        <input type="hidden" id="poster_str" value="0">
+                        <input type="hidden" id="backdraft_str" value="0">
+                        <div id="tmdb" class="col-2">
+                        </div>
+                        <div id="backdraft_det" class="col-6">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <p>Title: <span id="title"></span></p>
+                    <p>Year: <span id="year_det"></span></p>
+                    <p>IMDB Id: <span id="imdb_det"></span></p>
+                    <p>TMDB Id: <span id="mid"></span></p>
+                    <p>Vote:<span id="vote_average"></span></p>
+                    <p>Genres:<span id="genres_det"></span></p>
+                    <p>Release Date:<span id="release_date"></span></p>
+                    <p>Language:<span id="lang_det"></span></p>
+                    <p>length:<span id="runtime_det"></span></p>
+                    <p>Story: <span id="overview"></span></p>
+                    <p>Cast:<span id="cast_det"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/admin/AddMovie.js"></script>
+
+<%- include('../includes/end.ejs') %>
+

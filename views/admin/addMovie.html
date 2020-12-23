@@ -1,0 +1,537 @@
+</head>
+
+<body>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+
+        <div class="row">
+
+
+
+
+            <div class="col-6">
+                <h1>Add New Media</h1>
+                <form action="http://cineplex.live/admin/upload_new" id="mediaform" name="mediaform" method="post"
+                    accept-charset="utf-8">
+                    <div class="form-group">
+                        <label for="MovieWatchLink">MovieWatchLink</label>
+                        <input type="text" class="form-control" name="MovieWatchLink" id="MovieWatchLink"
+                            placeholder="MovieWatchLink">
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieQuality">MovieQuality</label>
+                        <input type="text" class="form-control" name="MovieQuality" id="MovieQuality"
+                            placeholder="MovieQuality">
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary"
+                            id="LQ">LQ</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary"
+                            id="HQ">HQ</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary"
+                            id="SD">SD</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary"
+                            id="HD">HD</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary"
+                            id="Blueray">Blueray</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary"
+                            id="4K">4K</button>
+                        <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary"
+                            id="3D">3D</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieCategory">MovieCategory</label>
+                        <input type="text" class="form-control" name="MovieCategory" id="MovieCategory"
+                            placeholder="MovieCategory">
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary"
+                            id="Bollywood">Bollywood</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary"
+                            id="Hollywood">Hollywood</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary"
+                            id="Tamil">Tamil</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary"
+                            id="Netflix">Netflix</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary"
+                            id="Hoichoi">Hoichoi</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary"
+                            id="Animation">Animation</button>
+                        <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary"
+                            id="Foreign">Foreign</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieKeywords">MovieKeywords</label>
+                        <input type="text" class="form-control" name="MovieKeywords" id="MovieKeywords"
+                            placeholder="MovieKeywords">
+                        <button type="button" onclick="clearKeyWord()" class="btn btn-outline-warning">Clear</button>
+                        <br>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Murder">Murder</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Violence">Violence</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Blood">Blood</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Dead">Dead</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Fight">Fight</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Chase">Chase</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Escape">Escape</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Fear">Fear</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Rescue">Rescue</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Kidnapping">Kidnapping</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Revenge">Revenge</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Betrayal">Betrayal</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Suicide">Suicide</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Survival">Survival</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Danger">Danger</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Suspense">Suspense</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Explosion">Explosion</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Hospital">Hospital</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Dog">Dog</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Nudity">Nudity</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Sex">Sex</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Brutality">Brutality</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Deception">Deception</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Teenager">Teenager</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Massacre">Massacre</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Paranoia">Paranoia</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Surprise">Surprise</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Police">Police</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Doctor">Doctor</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Criminal">Criminal</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Shootout">Shootout</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Conspiracy">Conspiracy</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Money">Money</button>
+                        <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary"
+                            id="Torture">Torture</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieTrailer">MovieTrailer</label>
+                        <input type="text" class="form-control" name="MovieTrailer" id="MovieTrailer"
+                            placeholder="MovieTrailer">
+                        <div id="trailer_div"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieTitle">MovieTitle</label>
+                        <input type="text" class="form-control" name="MovieTitle" id="MovieTitle"
+                            placeholder="MovieTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieYear">MovieYear</label>
+                        <input type="text" class="form-control" name="MovieYear" id="MovieYear" placeholder="MovieYear">
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieID">MovieID</label>
+                        <input type="text" class="form-control" name="MovieID" id="MovieID" placeholder="MovieID">
+                    </div>
+                    <div class="form-group">
+                        <label for="tmdb_id">TMDB id</label>
+                        <input type="text" class="form-control" name="tmdb_id" id="tmdb_id" placeholder="tmdb_id">
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieRatings">MovieRatings</label>
+                        <input type="text" class="form-control" name="MovieRatings" id="MovieRatings"
+                            placeholder="MovieRatings">
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieGenre">MovieGenre</label>
+                        <input type="text" class="form-control" name="MovieGenre" id="MovieGenre"
+                            placeholder="MovieGenre">
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieDate">MovieDate</label>
+                        <input type="text" class="form-control" name="MovieDate" id="MovieDate" placeholder="MovieDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="Movielang">Movielang</label>
+                        <input type="text" class="form-control" name="Movielang" id="Movielang" placeholder="Movielang">
+                    </div>
+                    <div class="form-group">
+                        <label for="Moviehomepage">Moviehomepage</label>
+                        <input type="text" class="form-control" name="Moviehomepage" id="Moviehomepage"
+                            placeholder="Moviehomepage" value="NA">
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieRuntime">MovieRuntime</label>
+                        <input type="text" class="form-control" name="MovieRuntime" id="MovieRuntime"
+                            placeholder="MovieRuntime">
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieStory">MovieStory</label>
+                        <input type="text" class="form-control" name="MovieStory" id="MovieStory"
+                            placeholder="MovieStory">
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieSubtitle">MovieSubtitle</label>
+                        <input type="text" class="form-control" name="MovieSubtitle" id="MovieSubtitle"
+                            placeholder="MovieSubtitle" value="NA">
+                    </div>
+                    <div class="form-group">
+                        <label for="MovieActors">MovieActors</label>
+                        <input type="text" class="form-control" name="MovieActors" id="MovieActors"
+                            placeholder="MovieActors">
+                    </div>
+                    <div class="form-group">
+                        <label for="poster">poster</label>
+                        <input type="text" class="form-control" name="poster" id="poster" placeholder="poster">
+                    </div>
+                    <div class="form-group">
+                        <label for="backdraft">backdraft</label>
+                        <input type="text" class="form-control" name="backdraft" id="backdraft" placeholder="backdraft">
+                    </div>
+                    <div class="form-group">
+                        <label for="views">views</label>
+                        <input type="text" class="form-control" name="views" id="views" placeholder="views" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="published">published</label>
+                        <!-- <input type="text" class="form-control" name="published" id="published" placeholder="published"> -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="published" id="published" value="1"
+                                checked>
+                            <label class="form-check-label" for="published">
+                                Published
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="published" id="unpublished" value="0">
+                            <label class="form-check-label" for="unpublished">
+                                Unpublished
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="DownHit">DownHit</label>
+                        <input type="text" class="form-control" name="DownHit" id="DownHit" placeholder="DownHit"
+                            value="0">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-success">Save</button>
+                    </div>
+                </form>
+                <!-- <button class="btn btn-default" onclick="callCalculator()">callPop</button> -->
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name" value="Omkara">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Year</label>
+                    <input type="text" class="form-control" id="year" placeholder="Year" value="2006">
+                </div>
+                <button class="btn btn-default" onclick="tmdbProvider()">TMDB Search</button>
+                <button class="btn btn-default" onclick="tmdbCopy()">TMDB Copy</button>
+                <div class="col-12">
+                    <div class="row">
+                        <input type="hidden" id="poster_str" value="0">
+                        <input type="hidden" id="backdraft_str" value="0">
+                        <div id="tmdb" class="col-2">
+                        </div>
+                        <div id="backdraft_det" class="col-6">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <p>Title: <span id="title"></span></p>
+                    <p>Year: <span id="year_det"></span></p>
+                    <p>IMDB Id: <span id="imdb_det"></span></p>
+                    <p>TMDB Id: <span id="mid"></span></p>
+                    <p>Vote:<span id="vote_average"></span></p>
+                    <p>Genres:<span id="genres_det"></span></p>
+                    <p>Release Date:<span id="release_date"></span></p>
+                    <p>Language:<span id="lang_det"></span></p>
+                    <p>length:<span id="runtime_det"></span></p>
+                    <p>Story: <span id="overview"></span></p>
+                    <p>Cast:<span id="cast_det"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <script>
+            function tmdbCopy() {
+
+                var title = document.getElementById('title').innerHTML;
+                var year_det = document.getElementById('year_det').innerHTML;
+                var imdb_det = document.getElementById('imdb_det').innerHTML;
+                var mid = document.getElementById('mid').innerHTML;
+                var vote_average = document.getElementById('vote_average').innerHTML;
+                var genres_det = document.getElementById('genres_det').innerHTML;
+                var release_date = document.getElementById('release_date').innerHTML;
+                var lang_det = document.getElementById('lang_det').innerHTML;
+                var runtime_det = document.getElementById('runtime_det').innerHTML;
+                var overview = document.getElementById('overview').innerHTML;
+                var cast_det = document.getElementById('cast_det').innerHTML;
+
+                var poster_str = document.getElementById('poster_str').value;
+                var backdraft_str = document.getElementById('backdraft_str').value;
+
+
+                document.getElementById('MovieTitle').value = title;
+                document.getElementById('MovieYear').value = year_det;
+                document.getElementById('MovieID').value = imdb_det;
+                document.getElementById('tmdb_id').value = mid;
+                document.getElementById('MovieRatings').value = vote_average;
+                document.getElementById('MovieGenre').value = genres_det;
+                document.getElementById('MovieDate').value = release_date;
+                document.getElementById('Movielang').value = lang_det;
+                document.getElementById('MovieRuntime').value = runtime_det;
+                document.getElementById('MovieStory').value = overview;
+                document.getElementById('MovieActors').value = cast_det;
+
+                document.getElementById('poster').value = poster_str.substring(1);
+                document.getElementById('backdraft').value = backdraft_str.substring(1);
+
+
+                var htmla = '<a target="blank" class="btn btn-outline-danger" href="https://www.youtube.com/results?search_query=';
+                var htmlb = title.trim();
+                var htmlb = htmlb.replace(" ", "+");
+                var htmlb = htmlb + "+Trailer";
+                var htmlc = '" id="trailerLink">Search Trailer</a>';
+                var htmld = htmla + htmlb + htmlc;
+                document.getElementById('trailer_div').innerHTML = htmld;
+
+            }
+
+            function tmdbProvider() {
+                var na = document.getElementById("name").value;
+                var ye = document.getElementById("year").value;
+                console.log(na);
+
+                $.ajax({
+                    type: "GET",
+                    url: 'https://api.themoviedb.org/3/search/movie',
+                    data: {
+                        api_key: '12788601d32c9501fbe03ef2129e6b59',
+                        query: na,
+                        year: ye
+                    },
+                    success: function (html) {
+                        // var myObj = JSON.parse(html);
+                        // console.log(myObj[0]);
+                        console.log(html.results[0].popularity);
+                        console.log(html.results[0].poster_path);
+                        var posterImg = 'https://image.tmdb.org/t/p/w500/' + html.results[0].poster_path;
+                        var backdraftImg = 'https://image.tmdb.org/t/p/w780/' + html.results[0].backdrop_path;
+                        var dmImg = '<img class="img-thumbnail" style="max-height:350px;" src="' + posterImg + '">';
+                        var bImg = '<img class="img-thumbnail" style="max-height:350px;" src="' + backdraftImg + '">';
+                        document.getElementById("poster_str").value = html.results[0].poster_path;
+                        document.getElementById("backdraft_str").value = html.results[0].backdrop_path;
+                        document.getElementById("tmdb").innerHTML = dmImg;
+                        document.getElementById("backdraft_det").innerHTML = bImg;
+                        document.getElementById("mid").innerHTML = html.results[0].id;
+                        document.getElementById("overview").innerHTML = html.results[0].overview;
+                        document.getElementById("release_date").innerHTML = html.results[0].release_date;
+                        document.getElementById("title").innerHTML = html.results[0].title;
+                        document.getElementById("vote_average").innerHTML = html.results[0].vote_average;
+                        document.getElementById("year_det").innerHTML = ye;
+                        movieDetailProvider(html.results[0].id);
+                        // console.log(dmImg);
+                        // callPop(dmImg);
+                        // pop = dmImg;
+                        // doSshit(html);
+                    }
+
+                });
+
+
+            }
+
+
+
+
+            function movieDetailProvider(mid) {
+
+
+                $.ajax({
+                    type: "GET",
+                    url: 'https://api.themoviedb.org/3/movie/' + mid,
+                    data: {
+                        api_key: '12788601d32c9501fbe03ef2129e6b59',
+                        // query:na, year:ye
+                    },
+                    success: function (html) {
+                        var myObj = JSON.parse(JSON.stringify(html));
+                        console.log('runtime:');
+                        var runtime = myObj.runtime.toString();
+                        var imdbId = myObj.imdb_id.toString();
+                        var spoken_languages = myObj.spoken_languages[0].english_name;
+                        var gencount = myObj.genres.length;
+                        var i;
+                        var dmGnr = "";
+                        for (i = 0; i < gencount; i++) {
+                            // console.log('we')
+                            dmGnr = dmGnr + myObj.genres[i].name.toString();
+                            if (i != gencount - 1) {
+                                dmGnr = dmGnr + ',';
+                            }
+                            console.log(myObj.genres[i].name.toString());
+                        }
+
+                        console.log('spoken_languages');
+                        console.log(spoken_languages);
+                        document.getElementById("genres_det").innerHTML = dmGnr;
+                        document.getElementById("runtime_det").innerHTML = runtime;
+                        document.getElementById("imdb_det").innerHTML = imdbId;
+                        document.getElementById("lang_det").innerHTML = spoken_languages;
+                        castDetailProvider(mid);
+
+                    }
+
+                });
+
+
+
+            }
+
+
+
+
+            function castDetailProvider(mid) {
+
+                $.ajax({
+                    type: "GET",
+                    url: 'https://api.themoviedb.org/3/movie/' + mid + '/credits',
+                    data: {
+                        api_key: '12788601d32c9501fbe03ef2129e6b59',
+                        // query:na, year:ye
+                    },
+                    success: function (html) {
+                        var myObj = JSON.parse(JSON.stringify(html));
+                        console.log('Cast n cru');
+                        console.log(myObj.cast);
+
+
+                        var castcount = myObj.cast.length;
+                        var i;
+                        var dmCast = "";
+                        for (i = 0; i < castcount; i++) {
+                            // console.log('we')
+                            dmCast = dmCast + myObj.cast[i].name.toString();
+                            if (i != castcount - 1) {
+                                dmCast = dmCast + ',';
+                            }
+
+                        }
+                        console.log(dmCast);
+                        document.getElementById("cast_det").innerHTML = dmCast;
+
+
+                    }
+
+                });
+
+            }
+
+
+            function categorycaster(this_id) {
+                document.getElementById("MovieCategory").value = this_id;
+
+            }
+
+            function qualitycaster(this_id) {
+                document.getElementById("MovieQuality").value = this_id;
+
+            }
+
+            function keywordcaster(this_id) {
+                var bucket = document.getElementById("MovieKeywords").value;
+                console.log(bucket.length);
+                if (bucket.length > 0) {
+                    var bucketFiller = bucket + ',' + this_id;
+                    document.getElementById("MovieKeywords").value = bucketFiller;
+                } else {
+                    document.getElementById("MovieKeywords").value = this_id;
+
+                }
+
+            }
+
+            function clearKeyWord() {
+                var blank = "";
+                document.getElementById("MovieKeywords").value = blank;
+            }
+
+            function callPop(pop) {
+                console.log(pop);
+                var ajaxprinter = document.getElementById("tmdb").innerHTML = pop;
+
+            }
+
+
+            function callCalculator() {
+
+
+
+                var name = document.getElementById("name").value;
+                var year = document.getElementById("year").value;
+
+
+
+                console.log(name);
+                console.log(year);
+
+
+
+            }
+
+
+
+
+            // window.setInterval(function(){
+
+            // callCalculator();
+            // }, 500);
+        </script>
+
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
