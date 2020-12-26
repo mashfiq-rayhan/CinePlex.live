@@ -31,14 +31,44 @@ exports.postAddMovie = (req, res, next) => {
     const views = req.body.views;
     const published = req.body.published;
     const downHit = req.body.downHit;
+    Movie.create({
+        movieWatchLink: movieWatchLink,
+        movieQuality: movieQuality,
+        movieCategory: movieCategory,
+        movieKeywords: movieKeywords,
+        movieTrailer: movieTrailer,
+        movieTitle: movieTitle,
+        movieYear: movieYear,
+        movieId: movieId,
+        tmdbId: tmdbId,
+        movieRatings: movieRatings,
+        movieGenre: movieGenre,
+        movieDate: movieDate,
+        movieLang: movieLang,
+        movieHomePage: movieHomePage,
+        movieRuntime: movieRuntime,
+        movieStory: movieStory,
+        movieSubtitle: movieSubtitle,
+        movieActors: movieActors,
+        moviePoster: moviePoster,
+        backdraft: backdraft,
+        views: views,
+        published: published,
+        downHit: downHit
+    }).then(result => {
+        res.redirect('/admin/movies');
+    }).catch(err => console.log(err));
 }
 
-// exports.postAddProduct = (req, res, next) => {
-//     const title = req.body.title;
-//     const imageUrl = req.body.imageUrl;
-//     const price = req.body.price;
-//     const description = req.body.description;
-//     const product = new Product(null, title, imageUrl, description, price);
-//     product.save();
-//     res.redirect('/');
-//   };
+
+exports.getMovies = (req, res, next) => {
+    Movie.findAll().then(movies => {
+      res.render('admin/movies', {
+        movies: movies,
+        pageTitle: 'Admin Movies',
+        path: '/admin/movies'
+      });
+    })
+    .catch(err => console.log(err));
+  };
+
