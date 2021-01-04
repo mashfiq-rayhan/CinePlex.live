@@ -1,32 +1,138 @@
+function tmdbProvider() {
+    let name = document.getElementById("sName").value;
+    let year = document.getElementById("sYear").value;
+
+    $.ajax({
+        type: "GET",
+        url: 'https://api.themoviedb.org/3/search/movie',
+        data: {
+            api_key: '12788601d32c9501fbe03ef2129e6b59',
+            query: name,
+            year: year
+        },
+        success: function (report) {
+            
+            let movieDetails = report;
+
+            let posterImg = 'https://image.tmdb.org/t/p/w500/' + movieDetails.results[0].poster_path;
+            let backdraftImg = 'https://image.tmdb.org/t/p/w780/' + movieDetails.results[0].backdrop_path;
+            let pImg = '<img class="img-thumbnail" style="max-height:350px;" src="' + posterImg + '">';
+            let bImg = '<img class="img-thumbnail" style="max-height:350px;" src="' + backdraftImg + '">';
+           
+            document.getElementById("poster_str").value = movieDetails.results[0].poster_path;
+            document.getElementById("backdraft_str").value = movieDetails.results[0].backdrop_path;
+
+            document.getElementById("poster").innerHTML = pImg;
+            document.getElementById("backdraft").innerHTML = bImg;
+
+            document.getElementById("title").innerHTML = movieDetails.results[0].title;
+            document.getElementById("year").innerHTML = year;
+            document.getElementById("tmdbid").innerHTML = movieDetails.results[0].id;
+            document.getElementById("vote").innerHTML = movieDetails.results[0].vote_average;
+            document.getElementById("release_date").innerHTML = movieDetails.results[0].release_date;
+            document.getElementById("story").innerHTML = movieDetails.results[0].overview;
+            // document.getElementById("imdbid").innerHTML = dmImg;
+            movieDetailProvider(movieDetails.results[0].id);
+        }
+    });
+}
+
+function movieDetailProvider(mid) {
+
+    $.ajax({
+        type: "GET",
+        url: 'https://api.themoviedb.org/3/movie/' + mid,
+        data: {
+            api_key: '12788601d32c9501fbe03ef2129e6b59',
+            // query:na, year:ye
+        },
+        success: function (report) {
+            
+            let movieDetails = JSON.parse(JSON.stringify(report));
+
+            let runtime = movieDetails.runtime.toString();
+            let imdbId = movieDetails.imdb_id.toString();
+            let spoken_languages = movieDetails.spoken_languages[0].english_name;
+
+            let gencount = movieDetails.genres.length;
+            let i;
+            let dmGnr = "";
+            for (i = 0; i < gencount; i++) {
+                // console.log('we')
+                dmGnr = dmGnr + movieDetails.genres[i].name.toString();
+                if (i != gencount - 1) {
+                    dmGnr = dmGnr + ',';
+                }
+                console.log(movieDetails.genres[i].name.toString());
+            }
+            
+            document.getElementById("genres").innerHTML = dmGnr;
+            document.getElementById("runtime").innerHTML = runtime;
+            document.getElementById("imdbid").innerHTML = imdbId;
+            document.getElementById("lang").innerHTML = spoken_languages;
+            castDetailProvider(mid);
+        }
+    });
+}
+
+function castDetailProvider(mid) {
+
+    $.ajax({
+        type: "GET",
+        url: 'https://api.themoviedb.org/3/movie/' + mid + '/credits',
+        data: {
+            api_key: '12788601d32c9501fbe03ef2129e6b59',
+            // query:na, year:ye
+        },
+        success: function(report) {
+            let movieDetails = JSON.parse(JSON.stringify(report));
+            let castCount = movieDetails.cast.length;
+            let i;
+            let dmCast = "";
+            for (i = 0; i < castCount; i++) {
+                dmCast = dmCast + movieDetails.cast[i].name.toString();
+                if (i != castCount - 1) {
+                    dmCast = dmCast + ',';
+                }
+            }
+            document.getElementById("cast").innerHTML = dmCast;
+        }
+    });
+
+}
+
 function tmdbCopy() {
 
-    var title = document.getElementById('title').innerHTML;
-    var year_det = document.getElementById('year_det').innerHTML;
-    var imdb_det = document.getElementById('imdb_det').innerHTML;
-    var mid = document.getElementById('mid').innerHTML;
-    var vote_average = document.getElementById('vote_average').innerHTML;
-    var genres_det = document.getElementById('genres_det').innerHTML;
-    var release_date = document.getElementById('release_date').innerHTML;
-    var lang_det = document.getElementById('lang_det').innerHTML;
-    var runtime_det = document.getElementById('runtime_det').innerHTML;
-    var overview = document.getElementById('overview').innerHTML;
-    var cast_det = document.getElementById('cast_det').innerHTML;
-    var poster_str = document.getElementById('poster_str').value;
-    var backdraft_str = document.getElementById('backdraft_str').value;
+    // from TMDB
+    let title = document.getElementById('title').innerHTML;
+    let year = document.getElementById('year').innerHTML;
+    let tmdbid = document.getElementById('tmdbid').innerHTML;
+    let vote = document.getElementById('vote').innerHTML;
+    let release_date = document.getElementById('release_date').innerHTML;
+    let story = document.getElementById('story').innerHTML;
+    let poster_str = document.getElementById('poster_str').value;
+    let backdraft_str = document.getElementById('backdraft_str').value;
+
+    // from IMDB
+    let genres = document.getElementById('genres').innerHTML;
+    let runtime = document.getElementById('runtime').innerHTML;
+    let imdbid = document.getElementById('imdbid').innerHTML;
+    let lang = document.getElementById('lang').innerHTML;
+    let cast = document.getElementById('cast').innerHTML;
 
 
-    document.getElementById('MovieTitle').value = title;
-    document.getElementById('MovieYear').value = year_det;
-    document.getElementById('MovieID').value = imdb_det;
-    document.getElementById('tmdb_id').value = mid;
-    document.getElementById('MovieRatings').value = vote_average;
-    document.getElementById('MovieGenre').value = genres_det;
-    document.getElementById('MovieDate').value = release_date;
-    document.getElementById('Movielang').value = lang_det;
-    document.getElementById('MovieRuntime').value = runtime_det;
-    document.getElementById('MovieStory').value = overview;
-    document.getElementById('MovieActors').value = cast_det;
-    document.getElementById('poster').value = poster_str.substring(1);
+    document.getElementById('movieTitle').value = title;
+    document.getElementById('movieYear').value = year;
+    document.getElementById('tmdbId').value = tmdbid;
+    document.getElementById('movieRatings').value = vote;
+    document.getElementById('movieDate').value = release_date;
+    document.getElementById('movieStory').value = story;
+    document.getElementById('movieId').value = imdbid;
+    document.getElementById('movieGenre').value = genres;
+    document.getElementById('movieLang').value = lang;
+    document.getElementById('movieRuntime').value = runtime;
+    document.getElementById('movieActors').value = cast;
+    document.getElementById('moviePoster').value = poster_str.substring(1);
     document.getElementById('backdraft').value = backdraft_str.substring(1);
 
 
@@ -40,184 +146,43 @@ function tmdbCopy() {
 
 }
 
-function tmdbProvider() {
-    var na = document.getElementById("name").value;
-    var ye = document.getElementById("year").value;
-    console.log(na);
-
-    $.ajax({
-        type: "GET",
-        url: 'https://api.themoviedb.org/3/search/movie',
-        data: {
-            api_key: '12788601d32c9501fbe03ef2129e6b59',
-            query: na,
-            year: ye
-        },
-        success: function (html) {
-            // var myObj = JSON.parse(html);
-            // console.log(myObj[0]);
-            console.log(html.results[0].popularity);
-            console.log(html.results[0].poster_path);
-            var posterImg = 'https://image.tmdb.org/t/p/w500/' + html.results[0].poster_path;
-            var backdraftImg = 'https://image.tmdb.org/t/p/w780/' + html.results[0].backdrop_path;
-            var dmImg = '<img class="img-thumbnail" style="max-height:350px;" src="' + posterImg + '">';
-            var bImg = '<img class="img-thumbnail" style="max-height:350px;" src="' + backdraftImg + '">';
-            document.getElementById("poster_str").value = html.results[0].poster_path;
-            document.getElementById("backdraft_str").value = html.results[0].backdrop_path;
-            document.getElementById("tmdb").innerHTML = dmImg;
-            document.getElementById("backdraft_det").innerHTML = bImg;
-            document.getElementById("mid").innerHTML = html.results[0].id;
-            document.getElementById("overview").innerHTML = html.results[0].overview;
-            document.getElementById("release_date").innerHTML = html.results[0].release_date;
-            document.getElementById("title").innerHTML = html.results[0].title;
-            document.getElementById("vote_average").innerHTML = html.results[0].vote_average;
-            document.getElementById("year_det").innerHTML = ye;
-            movieDetailProvider(html.results[0].id);
-            // console.log(dmImg);
-            // callPop(dmImg);
-            // pop = dmImg;
-            // doSshit(html);
-        }
-
-    });
-
-
-}
-
-
-
-
-function movieDetailProvider(mid) {
-
-
-    $.ajax({
-        type: "GET",
-        url: 'https://api.themoviedb.org/3/movie/' + mid,
-        data: {
-            api_key: '12788601d32c9501fbe03ef2129e6b59',
-            // query:na, year:ye
-        },
-        success: function (html) {
-            var myObj = JSON.parse(JSON.stringify(html));
-            console.log('runtime:');
-            var runtime = myObj.runtime.toString();
-            var imdbId = myObj.imdb_id.toString();
-            var spoken_languages = myObj.spoken_languages[0].english_name;
-            var gencount = myObj.genres.length;
-            var i;
-            var dmGnr = "";
-            for (i = 0; i < gencount; i++) {
-                // console.log('we')
-                dmGnr = dmGnr + myObj.genres[i].name.toString();
-                if (i != gencount - 1) {
-                    dmGnr = dmGnr + ',';
-                }
-                console.log(myObj.genres[i].name.toString());
-            }
-
-            console.log('spoken_languages');
-            console.log(spoken_languages);
-            document.getElementById("genres_det").innerHTML = dmGnr;
-            document.getElementById("runtime_det").innerHTML = runtime;
-            document.getElementById("imdb_det").innerHTML = imdbId;
-            document.getElementById("lang_det").innerHTML = spoken_languages;
-            castDetailProvider(mid);
-
-        }
-
-    });
-
-
-
-}
-
-
-
-
-function castDetailProvider(mid) {
-
-    $.ajax({
-        type: "GET",
-        url: 'https://api.themoviedb.org/3/movie/' + mid + '/credits',
-        data: {
-            api_key: '12788601d32c9501fbe03ef2129e6b59',
-            // query:na, year:ye
-        },
-        success: function (html) {
-            var myObj = JSON.parse(JSON.stringify(html));
-            console.log('Cast n cru');
-            console.log(myObj.cast);
-
-
-            var castcount = myObj.cast.length;
-            var i;
-            var dmCast = "";
-            for (i = 0; i < castcount; i++) {
-                // console.log('we')
-                dmCast = dmCast + myObj.cast[i].name.toString();
-                if (i != castcount - 1) {
-                    dmCast = dmCast + ',';
-                }
-
-            }
-            console.log(dmCast);
-            document.getElementById("cast_det").innerHTML = dmCast;
-
-
-        }
-
-    });
-
-}
-
-
 function categorycaster(this_id) {
-    document.getElementById("MovieCategory").value = this_id;
+    document.getElementById("movieCategory").value = this_id;
 
 }
 
 function qualitycaster(this_id) {
-    document.getElementById("MovieQuality").value = this_id;
+    document.getElementById("movieQuality").value = this_id;
 
 }
 
 function keywordcaster(this_id) {
-    var bucket = document.getElementById("MovieKeywords").value;
+    var bucket = document.getElementById("movieKeywords").value;
     console.log(bucket.length);
     if (bucket.length > 0) {
         var bucketFiller = bucket + ',' + this_id;
-        document.getElementById("MovieKeywords").value = bucketFiller;
+        document.getElementById("movieKeywords").value = bucketFiller;
     } else {
-        document.getElementById("MovieKeywords").value = this_id;
+        document.getElementById("movieKeywords").value = this_id;
 
     }
 
 }
 
-function clearKeyWord() {
+function clearKeywords() {
     var blank = "";
-    document.getElementById("MovieKeywords").value = blank;
+    document.getElementById("movieKeywords").value = blank;
 }
 
-function callPop(pop) {
-    console.log(pop);
-    var ajaxprinter = document.getElementById("tmdb").innerHTML = pop;
+// function callCalculator() {
+//     var name = document.getElementById("name").value;
+//     var year = document.getElementById("year").value;
+//     console.log(name);
+//     console.log(year);
+// }
 
-}
+// function callPop(pop) {
+//     console.log(pop);
+//     var ajaxprinter = document.getElementById("tmdb").innerHTML = pop;
 
-
-function callCalculator() {
-
-
-
-    var name = document.getElementById("name").value;
-    var year = document.getElementById("year").value;
-
-
-
-    console.log(name);
-    console.log(year);
-
-
-
-}
+// }

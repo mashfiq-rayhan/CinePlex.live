@@ -1,13 +1,104 @@
 <%- include('../includes/head.ejs') %>
 
-</head>
-<body>
-    <%- include('../includes/adminNavigation.ejs') %>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1>Admin Movie List</h1>
-<%- include('../includes/end.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/adminNavigation.ejs') %>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1>Admin Movie List</h1>
+            <p>This is the list of movies..</p>
+            <div class="container-fluid">
+                <div class="table-responsive">
+                    <table class="table table-dark table-striped table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>SN</th>
+                                <th>Title</th>
+                                <th>Year</th>
+                                <th>ID</th>
+                                <th>TMDB_Id</th>
+                                <th>Quality</th>
+                                <th>Category</th>
+                                <th>Trailer</th>
+                                <th>Ratings</th>
+                                <th>Genre</th>
+                                <th>Date</th>
+                                <th>Language</th>
+                                <th>Home_Page</th>
+                                <th>Runtime</th>
+                                <th>Keywords</th>
+                                <th>Story</th>
+                                <th>Watch_Link</th>
+                                <th>Subtitle</th>
+                                <th>Actors</th>
+                                <th>Size</th>
+                                <th>Poster</th>
+                                <th>Backdraft</th>
+                                <th>Views</th>
+                                <th>Published</th>
+                                <th>DownHit</th>
+                                <th>Uploaded_User</th>
+                                <th>Upload_Time</th>
+                                <th>Created_Time</th>
+                                <th>Update_Time</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if (movies.length> 0) { %>
+                                <% for (let movie of movies) { %>
+                                    <tr>
+                                        <td><%= movie.id %></td>
+                                        <td><%= movie.movieTitle %></td>
+                                        <td><%= movie.movieYear %></td>
+                                        <td><%= movie.movieId %></td>
+                                        <td><%= movie.tmdbId %></td>
+                                        <td><%= movie.movieQuality %></td>
+                                        <td><%= movie.movieCategory %></td>
+                                        <td><%= movie.movieTrailer %></td>
+                                        <td><%= movie.movieRatings %></td>
+                                        <td><%= movie.movieGenre %></td>
+                                        <td><%= movie.movieDate %></td>
+                                        <td><%= movie.movieLang %></td>
+                                        <td><%= movie.movieHomePage %></td>
+                                        <td><%= movie.movieRuntime %></td>
+                                        <td><%= movie.movieKeywords %></td>
+                                        <td><%= movie.movieStory %></td>
+                                        <td><%= movie.movieWatchLink %></td>
+                                        <td><%= movie.movieSubtitle %></td>
+                                        <td><%= movie.movieActors %></td>
+                                        <td><%= movie.movieSize %></td>
+                                        <td><%= movie.moviePoster %></td>
+                                        <td><%= movie.backdraft %></td>
+                                        <td><%= movie.views %></td>
+                                        <td><%= movie.published %></td>
+                                        <td><%= movie.downHit %></td>
+                                        <td><%= movie.uploadedUser %></td>
+                                        <td><%= movie.uploadTime %></td>
+                                        <td><%= movie.createdAt.toDateString() %></td>
+                                        <td><%= movie.updatedAt.toDateString() %></td>
+                                        <td>
+                                            <a href="/admin/edit-movie/<%= movie.id %>?edit=true" class="btn btn-outline-primary">Edit</a>
+                                        </td>
+                                        <td>
+                                            <form action="/admin/delete-movie" method="POST">
+                                                <input type="hidden" value="<%= movie.id %>" name="mId">
+                                                <button class="btn btn-outline-danger" type="submit">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% } else { %>
+                                <h1 class="text-danger">No Movies Found!</h1>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <%- include('../includes/end.ejs') %>

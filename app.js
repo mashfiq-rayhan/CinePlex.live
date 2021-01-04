@@ -40,6 +40,6 @@ app.use(errorController.get404);
 sequelize.sync()
 .then(result => {
     console.log('Coonected with Database Successfully....');
-    app.listen(3000);
+    app.listen(3001);
 })
 .catch(err => console.log(err));

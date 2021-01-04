@@ -12,19 +12,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-6">
-                <h1>Add Movie</h1>
-                <form action="/admin/add-movie" id="addMovie" name="addMovie" method="post"
-                    accept-charset="utf-8">
-                    <div class="form-group offset-11">
-                        <button type="submit" class="btn btn-outline-success">Save</button>
+                <h1><% if (editing) { %>Update Movie<% } else { %>Add Movie<% } %></h1>
+                <form action="/admin/<% if (editing) { %>edit-movie<% } else { %>add-movie<% } %>" id="addMovie" name="addMovie" method="post" accept-charset="utf-8">
+                    <div class="form-group">
+                        <% if (editing) { %>
+                            <a href="/admin/add-movie" class="btn btn-outline-danger">Discard</a>
+                        <% } %>
+                        <button type="submit" class="btn btn-outline-success <% if (editing) { %> offset-8 <% } else { %> offset-10 <% } %>"><% if (editing) { %>Update Movie<% } else { %>Add Movie<% } %></button>
                     </div>
                     <div class="form-group">
                         <label for="movieWatchLink">Movie Watch Link</label>
-                        <input type="text" class="form-control" name="movieWatchLink" id="movieWatchLink" placeholder="Movie Watch Link">
+                        <input type="text" class="form-control" name="movieWatchLink" id="movieWatchLink" placeholder="Movie Watch Link" value="<% if (editing) { %><%= movie.movieWatchLink %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieQuality">Movie Quality</label>
-                        <input type="text" class="form-control" name="movieQuality" id="movieQuality" placeholder="Movie Quality">
+                        <input type="text" class="form-control" name="movieQuality" id="movieQuality" placeholder="Movie Quality" value="<% if (editing) { %><%= movie.movieQuality %><% } %>">
                         <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary" id="LQ">LQ</button>
                         <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary" id="HQ">HQ</button>
                         <button type="button" onclick="qualitycaster(this.id)" class="btn btn-outline-secondary" id="SD">SD</button>
@@ -35,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label for="movieCategory">Movie Category</label>
-                        <input type="text" class="form-control" name="movieCategory" id="movieCategory" placeholder="Movie Category">
+                        <input type="text" class="form-control" name="movieCategory" id="movieCategory" placeholder="Movie Category" value="<% if (editing) { %><%= movie.movieCategory %><% } %>">
                         <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary" id="Bollywood">Bollywood</button>
                         <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary" id="Hollywood">Hollywood</button>
                         <button type="button" onclick="categorycaster(this.id)" class="btn btn-outline-secondary" id="Tamil">Tamil</button>
@@ -46,8 +48,8 @@
                     </div>
                     <div class="form-group">
                         <label for="movieKeywords">Movie Keywords</label>
-                        <input type="text" class="form-control" name="movieKeywords" id="movieKeywords" placeholder="Movie Keywords">
-                        <button type="button" onclick="clearKeyWord()" class="btn btn-outline-warning">Clear</button>
+                        <input type="text" class="form-control" name="movieKeywords" id="movieKeywords" placeholder="Movie Keywords" value="<% if (editing) { %><%= movie.movieKeywords %><% } %>">
+                        <button type="button" onclick="clearKeywords()" class="btn btn-outline-warning">Clear</button>
                         <br>
                         <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Murder">Murder</button>
                         <button type="button" onclick="keywordcaster(this.id)" class="btn btn-outline-secondary" id="Violence">Violence</button>
@@ -86,39 +88,39 @@
                     </div>
                     <div class="form-group">
                         <label for="movieTrailer">Movie Trailer</label>
-                        <input type="text" class="form-control" name="movieTrailer" id="movieTrailer" placeholder="Movie Trailer">
+                        <input type="text" class="form-control" name="movieTrailer" id="movieTrailer" placeholder="Movie Trailer" value="<% if (editing) { %><%= movie.movieTrailer %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieTitle">Movie Title</label>
-                        <input type="text" class="form-control" name="movieTitle" id="movieTitle" placeholder="Movie Title">
+                        <input type="text" class="form-control" name="movieTitle" id="movieTitle" placeholder="Movie Title" value="<% if (editing) { %><%= movie.movieTitle %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieYear">Movie Year</label>
-                        <input type="text" class="form-control" name="movieYear" id="movieYear" placeholder="Movie Year">
+                        <input type="text" class="form-control" name="movieYear" id="movieYear" placeholder="Movie Year" value="<% if (editing) { %><%= movie.movieYear %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieId">Movie Id</label>
-                        <input type="text" class="form-control" name="movieId" id="movieId" placeholder="Movie Id">
+                        <input type="text" class="form-control" name="movieId" id="movieId" placeholder="Movie Id" value="<% if (editing) { %><%= movie.movieId %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="tmdbId">TMDB ID</label>
-                        <input type="text" class="form-control" name="tmdbId" id="tmdbId" placeholder="Tmdb Id">
+                        <input type="text" class="form-control" name="tmdbId" id="tmdbId" placeholder="Tmdb Id" value="<% if (editing) { %><%= movie.tmdbId %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieRatings">Movie Ratings</label>
-                        <input type="text" class="form-control" name="movieRatings" id="movieRatings" placeholder="Movie Ratings">
+                        <input type="text" class="form-control" name="movieRatings" id="movieRatings" placeholder="Movie Ratings" value="<% if (editing) { %><%= movie.movieRatings %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieGenre">Movie Genre</label>
-                        <input type="text" class="form-control" name="movieGenre" id="movieGenre" placeholder="Movie Genre">
+                        <input type="text" class="form-control" name="movieGenre" id="movieGenre" placeholder="Movie Genre" value="<% if (editing) { %><%= movie.movieGenre %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieDate">Movie Date</label>
-                        <input type="text" class="form-control" name="movieDate" id="movieDate" placeholder="Movie Date">
+                        <input type="text" class="form-control" name="movieDate" id="movieDate" placeholder="Movie Date" value="<% if (editing) { %><%= movie.movieDate %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieLang">Movie Language</label>
-                        <input type="text" class="form-control" name="movieLang" id="movieLang" placeholder="Movie Language">
+                        <input type="text" class="form-control" name="movieLang" id="movieLang" placeholder="Movie Language" value="<% if (editing) { %><%= movie.movieLang %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieHomePage">Movie Home Page</label>
@@ -126,11 +128,11 @@
                     </div>
                     <div class="form-group">
                         <label for="movieRuntime">Movie Runtime</label>
-                        <input type="text" class="form-control" name="movieRuntime" id="movieRuntime" placeholder="Movie Runtime">
+                        <input type="text" class="form-control" name="movieRuntime" id="movieRuntime" placeholder="Movie Runtime" value="<% if (editing) { %><%= movie.movieRuntime %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieStory">Movie Story</label>
-                        <input type="text" class="form-control" name="movieStory" id="movieStory" placeholder="MovieStory">
+                        <input type="text" class="form-control" name="movieStory" id="movieStory" placeholder="MovieStory" value="<% if (editing) { %><%= movie.movieStory %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="movieSubtitle">Movie Subtitle</label>
@@ -138,15 +140,15 @@
                     </div>
                     <div class="form-group">
                         <label for="movieActors">Movie Actors</label>
-                        <input type="text" class="form-control" name="movieActors" id="movieActors" placeholder="Movie Actors">
+                        <input type="text" class="form-control" name="movieActors" id="movieActors" placeholder="Movie Actors" value="<% if (editing) { %><%= movie.movieActors %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="moviePoster">Movie Poster</label>
-                        <input type="text" class="form-control" name="moviePoster" id="moviePoster" placeholder="Movie Poster">
+                        <input type="text" class="form-control" name="moviePoster" id="moviePoster" placeholder="Movie Poster" value="<% if (editing) { %><%= movie.moviePoster %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="backdraft">Backdraft</label>
-                        <input type="text" class="form-control" name="backdraft" id="backdraft" placeholder="Backdraft">
+                        <input type="text" class="form-control" name="backdraft" id="backdraft" placeholder="Backdraft" value="<% if (editing) { %><%= movie.backdraft %><% } %>">
                     </div>
                     <div class="form-group">
                         <label for="views">Views</label>
@@ -167,51 +169,61 @@
                         <label for="downHit">Down Hit</label>
                         <input type="text" class="form-control" name="downHit" id="downHit" placeholder="Down Hit" value="0">
                     </div>
-                    <div class="form-group offset-11">
-                        <button type="submit" class="btn btn-outline-success">Save</button>
+                    <% if (editing) { %>
+                        <input type="hidden" value="<%= movie.id %>" name="mId">
+                    <% } %>
+                    <div class="form-group">
+                        <% if (editing) { %>
+                            <a href="/admin/add-movie" class="btn btn-outline-danger">Discard</a>
+                        <% } %>
+                        <button type="submit" class="btn btn-outline-success <% if (editing) { %> offset-8 <% } else { %> offset-10 <% } %>"><% if (editing) { %>Update Movie<% } else { %>Add Movie<% } %></button>
                     </div>
                 </form>
-            
             </div>
+            <!-- TMDB & IMDB SEARCH OPTION -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="formGroupExampleInput">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name" value="Omkara">
+                    <label for="sName">Name</label>
+                    <input type="text" class="form-control" name="sName" id="sName" placeholder="----" value="">
                 </div>
                 <div class="form-group">
-                    <label for="formGroupExampleInput2">Year</label>
-                    <input type="text" class="form-control" id="year" placeholder="Year" value="2006">
+                    <label for="sYear">Year</label>
+                    <input type="text" class="form-control" name="sYear" id="sYear" placeholder="----" value="">
                 </div>
-                <button class="btn btn-default" onclick="tmdbProvider()">TMDB Search</button>
-                <button class="btn btn-default" onclick="tmdbCopy()">TMDB Copy</button>
+                <button class="btn btn-outline-dark" onclick="tmdbProvider()">TMDB Search</button>
+                <button class="btn btn-outline-dark" onclick="tmdbCopy()">TMDB Copy</button>
+                <hr>
                 <div class="col-12">
                     <div class="row">
                         <input type="hidden" id="poster_str" value="0">
                         <input type="hidden" id="backdraft_str" value="0">
-                        <div id="tmdb" class="col-2">
+                        <div id="poster" class="col-2">
                         </div>
-                        <div id="backdraft_det" class="col-6">
+                        <div id="backdraft" class="col-6">
                         </div>
                     </div>
                 </div>
+                <hr>
                 <div class="col-12">
+                    <!-- from TMDB -->
                     <p>Title: <span id="title"></span></p>
-                    <p>Year: <span id="year_det"></span></p>
-                    <p>IMDB Id: <span id="imdb_det"></span></p>
-                    <p>TMDB Id: <span id="mid"></span></p>
-                    <p>Vote:<span id="vote_average"></span></p>
-                    <p>Genres:<span id="genres_det"></span></p>
+                    <p>Year: <span id="year"></span></p>
+                    <p>TMDB Id: <span id="tmdbid"></span></p>
+                    <p>Vote:<span id="vote"></span></p>
                     <p>Release Date:<span id="release_date"></span></p>
-                    <p>Language:<span id="lang_det"></span></p>
-                    <p>length:<span id="runtime_det"></span></p>
-                    <p>Story: <span id="overview"></span></p>
-                    <p>Cast:<span id="cast_det"></span></p>
+                    <p>Story: <span id="story"></span></p>
+                    <!-- from IMDB -->
+                    <p>Genres:<span id="genres"></span></p>
+                    <p>length:<span id="runtime"></span></p>
+                    <p>IMDB Id: <span id="imdbid"></span></p>
+                    <p>Language:<span id="lang"></span></p>
+                    <p>Cast:<span id="cast"></span></p>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="/js/admin/AddMovie.js"></script>
+    <script src="/js/admin/addMovie.js"></script>
 
 <%- include('../includes/end.ejs') %>
 
