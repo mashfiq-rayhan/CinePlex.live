@@ -34,7 +34,7 @@ CinePlex.live is a modern online movie streaming platform designed to simplify t
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/CinePlex.live-main.git
+   git clone https://github.com/mashfiq-rayhan/CinePlex.live.git
    cd CinePlex.live-main
    ```
 2. Install dependencies:
